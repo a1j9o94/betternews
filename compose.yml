@@ -1,0 +1,20 @@
+services:
+  db:
+    image: postgres:17
+    environment:
+      - POSTGRES_USER=betternews
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=betternewsdb
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - betternews-network
+
+networks:
+  betternews-network:
+    driver: bridge
+
+volumes:
+  postgres-data:
